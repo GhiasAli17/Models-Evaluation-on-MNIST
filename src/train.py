@@ -3,12 +3,9 @@ import torch.nn as nn
 import torch.optim as optim
 import copy
 import time
-from data import load_data_nn, load_data_cnn
-from models import MLP, CNN
 
 def train_model(model, train_loader, val_loader, model_name, num_epochs=50, patience=10):
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model.to(device)
+    
     optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=0.0001)
     criterion = nn.CrossEntropyLoss()
 
@@ -30,7 +27,7 @@ def train_model(model, train_loader, val_loader, model_name, num_epochs=50, pati
         correct = 0
         total = 0
         for images, labels in train_loader:
-            images, labels = images.to(device), labels.to(device)
+          
             optimizer.zero_grad()
             outputs = model(images)
             loss = criterion(outputs, labels)
@@ -52,7 +49,7 @@ def train_model(model, train_loader, val_loader, model_name, num_epochs=50, pati
         val_total = 0
         with torch.no_grad():
             for images, labels in val_loader:
-                images, labels = images.to(device), labels.to(device)
+                
                 outputs = model(images)
                 loss = criterion(outputs, labels)
                 val_running_loss += loss.item() * images.size(0)

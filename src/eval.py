@@ -4,18 +4,17 @@ from sklearn.metrics import classification_report, confusion_matrix
 from torchsummary import summary
 
 def evaluate_model(model, data_loader, is_cnn=False):
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    
     model.eval()
     all_preds = []
     all_labels = []
     
     with torch.no_grad():
         for images, labels in data_loader:
-            images, labels = images.to(device), labels.to(device)
             outputs = model(images)
             _, predicted = torch.max(outputs, 1)
-            all_preds.extend(predicted.cpu().numpy())
-            all_labels.extend(labels.cpu().numpy())
+            all_preds.extend(predicted.numpy())
+            all_labels.extend(labels.numpy())
     
     acc = (np.array(all_preds) == np.array(all_labels)).sum() / len(all_labels)
     report = classification_report(all_labels, all_preds)

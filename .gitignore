@@ -1,0 +1,26 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+pytorchenv/
+.env/
+
+# Data & models
+data/
+datasets/
+*.pt
+*.pth
+*.ckpt
+
+# Jupyter & VS Code
+.ipynb_checkpoints/
+.vscode/
+
+# Logs & outputs
+logs/
+runs/
+*.log

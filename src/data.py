@@ -1,6 +1,6 @@
 import torch
 from torchvision import datasets, transforms
-from torch.utils.data import DataLoader, TensorDataset
+from torch.utils.data import DataLoader, TensorDataset,Subset
 import numpy as np
 from sklearn.model_selection import train_test_split
 
@@ -37,8 +37,8 @@ def load_data_nn(batch_size):
     
     return train_loader, val_loader, test_loader, x_test, y_test
 
+
 def load_data_cnn(batch_size):
-    
     """
     Loads and prepares data for the CNN with stratified train/val split.
     """
@@ -46,14 +46,14 @@ def load_data_cnn(batch_size):
     # Define transforms
     train_transform = transforms.Compose([
         transforms.RandomRotation(10),   # augmentation only for train
-        transforms.ToTensor(),
+        transforms.ToTensor(),           # converts PIL -> Tensor [C,H,W]
     ])
 
     test_transform = transforms.Compose([
         transforms.ToTensor(),
     ])
 
-    # Load raw MNIST (no transform yet)
+    # Load raw MNIST (no transform yet, gives PIL images)
     mnist_train_raw = datasets.MNIST(root='./data', train=True, download=True)
     mnist_test = datasets.MNIST(root='./data', train=False, download=True, transform=test_transform)
 
@@ -68,15 +68,12 @@ def load_data_cnn(batch_size):
         random_state=42
     )
 
-    # Apply transforms separately
-    train_dataset = TensorDataset(
-        datasets.MNIST(root='./data', train=True, download=True, transform=train_transform),
-        train_idx
-    )
-    val_dataset = TensorDataset(
-        datasets.MNIST(root='./data', train=True, download=True, transform=test_transform),
-        val_idx
-    )
+    # Apply transforms separately using Subset
+    mnist_train_tf = datasets.MNIST(root='./data', train=True, download=True, transform=train_transform)
+    mnist_val_tf   = datasets.MNIST(root='./data', train=True, download=True, transform=test_transform)
+
+    train_dataset = Subset(mnist_train_tf, train_idx)
+    val_dataset   = Subset(mnist_val_tf, val_idx)
 
     # DataLoaders
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
@@ -84,3 +81,4 @@ def load_data_cnn(batch_size):
     test_loader  = DataLoader(mnist_test, batch_size=batch_size, shuffle=False)
 
     return train_loader, val_loader, test_loader
+
