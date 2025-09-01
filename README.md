@@ -8,7 +8,7 @@ main.ipynb is the main file, where other modules are imported, the flow and visu
    
 ## 📂 Project Structure
 ├── data/ # MNIST dataset (downloaded automatically)
-├── src/ 
+├── src/
 │ ├── data.py # data loading
 │ ├── train.py # models training
 │ ├── models.py # model's architecture definitions,
