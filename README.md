@@ -1,7 +1,7 @@
 # MNIST Classification with PyTorch (MLP & CNN)
 
-1. Clone repo
-2. pip install -r requirements.txt
+1. Repo Cloning
+2. pip install -r requirements_pt.txt (major packages installation)
 
 # Usage
 main.ipynb is the main file, where other modules are imported, the flow and visualization can be viewed in the main.ipynb file
@@ -11,8 +11,9 @@ main.ipynb is the main file, where other modules are imported, the flow and visu
 │ ├── data.py # data loading  
 │ ├── train.py # models training  
 │ ├── models.py # model's architecture definitions,  
-│ ├── eval.py # testing  
+│ ├── eval.py # testing models
 ├── utils/ # Helper functions  
 │ ├── plot_utils.py #helper functions for graph, metrics plotting  
 ├── main.ipynb # Entry point  
-├── requirements.txt #  
+├── requirements_pt.txt # major packages  
+├── PDF Report 

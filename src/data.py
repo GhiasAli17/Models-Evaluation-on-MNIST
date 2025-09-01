@@ -40,12 +40,12 @@ def load_data_nn(batch_size):
 
 def load_data_cnn(batch_size):
     """
-    Loads and prepares data for the CNN with stratified train/val split.
+    Loads and prepares data for the CNN 
     """
 
-    # Define transforms
+    #  transforms by 10% rotation
     train_transform = transforms.Compose([
-        transforms.RandomRotation(10),   # augmentation only for train
+        transforms.RandomRotation(10),   
         transforms.ToTensor(),           
     ])
 
@@ -68,7 +68,6 @@ def load_data_cnn(batch_size):
         random_state=42
     )
 
-    # Apply transforms separately using Subset
     mnist_train_tf = datasets.MNIST(root='./data', train=True, download=True, transform=train_transform)
     mnist_val_tf   = datasets.MNIST(root='./data', train=True, download=True, transform=test_transform)
 
