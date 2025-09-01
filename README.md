@@ -4,7 +4,7 @@
 2. pip install -r requirements.txt
 
 # Usage
-main.ipynb is the main file, where other modules are imported, the flow and visualization can be viewed in the .ipynb file
+main.ipynb is the main file, where other modules are imported, the flow and visualization can be viewed in the main.ipynb file
    
 ## 📂 Project Structure 
 ├── src/  
