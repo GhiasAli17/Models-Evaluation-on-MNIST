@@ -6,8 +6,7 @@
 # Usage
 main.ipynb is the main file, where other modules are imported, the flow and visualization can be viewed in the .ipynb file
    
-## 📂 Project Structure
-├── data/ # MNIST dataset (downloaded automatically)  
+## 📂 Project Structure 
 ├── src/  
 │ ├── data.py # data loading  
 │ ├── train.py # models training  
