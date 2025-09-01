@@ -24,5 +24,5 @@ main.ipynb is the main and entry file, where other modules are imported, the flo
 │ ├── plot_utils.py #helper functions for graph, metrics plotting  
 ├── main.ipynb # Entry point  
 ├── requirements_pt.txt # major packages  
-├── SummarizedChanges.md # major changes from previous version
+├── SummarizedChanges.md # major changes from previous version  
 ├── PDF Report 
