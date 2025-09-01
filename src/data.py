@@ -46,14 +46,14 @@ def load_data_cnn(batch_size):
     # Define transforms
     train_transform = transforms.Compose([
         transforms.RandomRotation(10),   # augmentation only for train
-        transforms.ToTensor(),           # converts PIL -> Tensor [C,H,W]
+        transforms.ToTensor(),           
     ])
 
     test_transform = transforms.Compose([
         transforms.ToTensor(),
     ])
 
-    # Load raw MNIST (no transform yet, gives PIL images)
+    
     mnist_train_raw = datasets.MNIST(root='./data', train=True, download=True)
     mnist_test = datasets.MNIST(root='./data', train=False, download=True, transform=test_transform)
 
