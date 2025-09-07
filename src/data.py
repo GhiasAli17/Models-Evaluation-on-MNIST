@@ -57,17 +57,16 @@ def load_data_nn(batch_size):
         test_size=10000, stratify=y_train_full.numpy(), random_state=42
     )
 
-    # convert numpy -> tensor
+    # converting numpy -> tensor
     x_train = torch.tensor(x_train, dtype=torch.float32)
     x_val   = torch.tensor(x_val, dtype=torch.float32)
     y_train = torch.tensor(y_train, dtype=torch.long)
     y_val   = torch.tensor(y_val, dtype=torch.long)
 
-    # test set was already tensor -> just cast dtype
     x_test = x_test.to(torch.float32)
     y_test = y_test.to(torch.long)
 
-    # --- augment + duplicate ---
+    # --- augment + adding to original dataset ---
     x_train, y_train = augment_and_duplicate(x_train, y_train)
 
     # flatten for NN
