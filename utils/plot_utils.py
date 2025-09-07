@@ -21,6 +21,8 @@ def plot_misclassified_images(misclassified_indices, x_test, y_test, model_pred,
         img = x_test[idx]
         if img.ndim == 3:
             img = img.squeeze()
+        elif img.ndim == 1:       # e.g., (784,)
+            img = img.reshape(28, 28)    
         plt.imshow(img, cmap='gray')
         plt.title(f"T:{y_test[idx]} P:{model_pred[idx]}")
         plt.axis('off')

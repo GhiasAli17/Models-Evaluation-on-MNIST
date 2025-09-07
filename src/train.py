@@ -4,7 +4,7 @@ import torch.optim as optim
 import copy
 import time
 
-def train_model(model, train_loader, val_loader, model_name, num_epochs=50, patience=10):
+def train_model(model, train_loader, val_loader, model_name, num_epochs=30, patience=10):
     
     optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=0.0001)
     criterion = nn.CrossEntropyLoss()
