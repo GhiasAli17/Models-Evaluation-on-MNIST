@@ -19,7 +19,7 @@ main.ipynb is the main and entry file, where other modules are imported, the flo
 │ ├── data.py # data loading  
 │ ├── train.py # models training  
 │ ├── models.py # model's architecture definitions,  
-│ ├── eval.py # testing models
+│ ├── eval.py # testing models  
 ├── utils/ # Helper functions  
 │ ├── plot_utils.py #helper functions for graph, metrics plotting  
 ├── main.ipynb # Entry point  
